@@ -16,9 +16,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--black);
   color: var(--white);
-  text-align: center;
-  font-weight: 800;
-  font-size: 6rem;
 }
 ::selection {
   background-color: var(--white);
