@@ -2,6 +2,9 @@
 * {
   box-sizing: border-box;
 }
+html {
+  overflow-x: hidden;
+}
 :root {
   --black: #111;
   --white: #ffffff;

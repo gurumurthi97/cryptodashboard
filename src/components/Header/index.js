@@ -1,10 +1,11 @@
 import React from "react";
 import Button from "../Button";
+import Drawer from "./Drawer";
 import "./style.css";
 function index() {
   return (
     <div className="navbar">
-      <h1>
+      <h1 className="heading">
         CryptoTracker<span style={{ color: "var(--blue)" }}>.</span>
       </h1>
       <div className="links-flex">
@@ -22,6 +23,9 @@ function index() {
             <Button text="Dashboard" />
           </p>
         </a>
+      </div>
+      <div className="menu-div">
+        <Drawer />
       </div>
     </div>
   );

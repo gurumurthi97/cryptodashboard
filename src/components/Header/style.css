@@ -24,3 +24,23 @@
   color: var(--white);
   transition: all 0.3s;
 }
+
+.menu-div {
+  display: none;
+}
+@media only screen and (max-width: 910px) {
+  .navbar {
+    padding: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .menu-div {
+    display: block;
+  }
+  .links-flex {
+    display: none;
+  }
+  .heading {
+    font-size: 1.2rem;
+  }
+}
