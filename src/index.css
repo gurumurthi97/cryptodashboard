@@ -1,13 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 * {
-  padding: 0px;
-  margin: 0px;
   box-sizing: border-box;
 }
 :root {
   --black: #111;
   --white: #ffffff;
-  --blue: #1e90ff;
+  --blue: #3180e9;
+  --grey: #888;
 }
 body {
   margin: 0;
@@ -46,4 +45,7 @@ img {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: var(--white);
+}
+h1 {
+  font-size: 2rem;
 }

@@ -1,3 +1,26 @@
-.header {
-  height: 1rem;
+.navbar {
+  padding-left: 3rem;
+  padding-right: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.links-flex {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.links {
+  text-decoration: none;
+  color: var(--grey);
+  padding: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 2rem;
+}
+.links:hover {
+  color: var(--white);
+  transition: all 0.3s;
 }
