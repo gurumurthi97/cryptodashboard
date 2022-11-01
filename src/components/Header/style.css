@@ -6,6 +6,10 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  position: sticky;
+  top: 0;
+  background-color: var(--black);
+  z-index: 100;
 }
 .links-flex {
   display: flex;
@@ -28,6 +32,16 @@
 .menu-div {
   display: none;
 }
+.drawer-div {
+  width: 45vw;
+  padding: 1rem;
+  color: var(--white);
+  font-weight: 500;
+  background-color: var(--black);
+  height: 100%;
+  padding-left: 0rem;
+}
+
 @media only screen and (max-width: 910px) {
   .navbar {
     padding: 1rem;
