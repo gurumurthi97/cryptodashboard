@@ -4,6 +4,7 @@ import iphone from "../../../assets/iphone2.png";
 import { motion } from "framer-motion";
 import Button from "../../Button";
 import OutLineButton from "../../OutLineButtton";
+import { RWebShare } from "react-web-share";
 function LandingComponent() {
   return (
     <div className="flex-wrapper">
@@ -26,7 +27,16 @@ function LandingComponent() {
           <a href="/dashboard">
             <Button text={"Dashboard"} />
           </a>
-          <OutLineButton text={"Share"} />
+          <RWebShare
+            data={{
+              text: "Crypto-Tracker is made in React",
+              url: "",
+              title: "Crypto-Tracker",
+            }}
+            onClick={() => console.log("shared successfully!")}
+          >
+            <OutLineButton text={"Share"} />
+          </RWebShare>
         </div>
       </div>
       <div>
