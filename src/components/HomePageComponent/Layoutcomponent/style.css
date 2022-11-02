@@ -1,3 +1,39 @@
-.wrapper {
-  min-height: 100vh;
+.flex-wrapper {
+  padding-left: 3rem;
+  padding-right: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.big-heading {
+  font-size: 5rem;
+  margin-bottom: 0px;
+}
+.strock:hover {
+  transition: all 0.3s;
+  cursor: pointer;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: var(--white);
+  color: var(--black);
+}
+.big-heading-blue {
+  color: var(--blue);
+}
+.para {
+  color: var(--gray);
+}
+.phone {
+  width: 400px;
+  /* display: block;
+  margin-left: auto;
+  margin-right: auto; */
+}
+.button-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 2rem;
+  align-items: center;
+  padding: 2rem 0rem;
 }
