@@ -39,7 +39,7 @@ function LandingComponent() {
           </RWebShare>
         </div>
       </div>
-      <div>
+      <div className="img-box">
         <motion.img
           src={iphone}
           alt="IPhone"
