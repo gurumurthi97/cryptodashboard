@@ -13,7 +13,6 @@
   margin: 0;
 }
 .outline-button-wrapper:hover {
-  cursor: pointer;
   background-color: var(--blue);
   transition: all 0.3s;
 }

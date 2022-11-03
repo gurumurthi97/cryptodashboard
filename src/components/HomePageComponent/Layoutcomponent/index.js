@@ -24,7 +24,7 @@ function LandingComponent() {
           do so!
         </p>
         <div className="button-div">
-          <a href="/dashboard">
+          <a href="/dashboard" style={{ textDecoration: "none" }}>
             <Button text={"Dashboard"} />
           </a>
           <RWebShare

@@ -4,9 +4,11 @@ import Header from "./components/Header/index";
 import Dashboard from "./pages/Dashboard";
 import Search from "./pages/Search";
 import Home from "./pages/Home";
+import AnimCursor from "./components/AnimCursor";
 function App() {
   return (
     <div>
+      <AnimCursor />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
