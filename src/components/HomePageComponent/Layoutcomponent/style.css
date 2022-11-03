@@ -12,7 +12,7 @@
 }
 .strock:hover {
   transition: all 0.3s;
-  cursor: pointer;
+  /* cursor: pointer; */
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: var(--white);
   color: var(--black);
