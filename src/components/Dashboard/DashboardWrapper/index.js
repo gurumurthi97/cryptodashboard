@@ -1,8 +1,40 @@
-import React from "react";
-
+import * as React from "react";
+import Tab from "@mui/material/Tab";
+import TabPanel from "@mui/lab/TabPanel";
+import TabList from "@mui/lab/TabList";
+import TabContext from "@mui/lab/TabContext";
+import Grid from "../Grid";
+import List from "../List";
 function DashboardWrapper({ data }) {
+  const [value, setValue] = React.useState("1");
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+  const style = {
+    color: "white",
+    fontWeight: 600,
+    fontFamily: "inter",
+    textTransform: "capitalize",
+  };
   return (
     <div>
+      <TabContext value={value}>
+        <TabList value={value} variant="fullWidth" onChange={handleChange}>
+          <Tab label="Grid" sx={style} />
+          <Tab label="List" sx={style} />
+        </TabList>
+        <TabPanel value={value} index={0}>
+          {data.map((coin, i) => (
+            <Grid coin={coin} key={i} />
+          ))}
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          {data.map((coin, i) => (
+            <List coin={coin} key={i} />
+          ))}
+        </TabPanel>
+      </TabContext>
       {data.map((item, i) => (
         <p key={i}>{item.id}</p>
       ))}
