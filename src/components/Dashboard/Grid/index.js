@@ -1,4 +1,6 @@
 import React from "react";
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import "./style.css";
 function Grid({ coin }) {
   return (
@@ -10,6 +12,36 @@ function Grid({ coin }) {
 
           <p className="name">{coin.name}</p>
         </div>
+      </div>
+      <div className="data-div">
+        <div
+          className="chip"
+          style={{
+            color:
+              coin.price_change_percentage_24h > 0
+                ? "var(--green)"
+                : "var(--red)",
+            borderColor:
+              coin.price_change_percentage_24h > 0
+                ? "var(--green)"
+                : "var(--red)",
+          }}
+        >
+          <p className="">
+            {coin.price_change_percentage_24h > 0 ? (
+              <span>
+                {"+" + coin.price_change_percentage_24h.toFixed(2) + "%"}
+              </span>
+            ) : (
+              coin.price_change_percentage_24h.toFixed(2) + "%"
+            )}
+          </p>
+        </div>
+        {coin.price_change_percentage_24h > 0 ? (
+          <TrendingUpIcon className="trending-icon" fontSize="2.5rem" />
+        ) : (
+          <TrendingDownIcon className="trending-icon re" fontSize="2.5rem" />
+        )}
       </div>
     </div>
   );
