@@ -4,7 +4,8 @@ import TabPanel from "@mui/lab/TabPanel";
 import TabList from "@mui/lab/TabList";
 import TabContext from "@mui/lab/TabContext";
 import Grid from "../Grid";
-import List from "../List";
+// import List from "../List";
+import "./style.css";
 function DashboardWrapper({ data }) {
   const [value, setValue] = React.useState("1");
 
@@ -24,20 +25,15 @@ function DashboardWrapper({ data }) {
           <Tab label="Grid" sx={style} />
           <Tab label="List" sx={style} />
         </TabList>
-        <TabPanel value={value} index={0}>
-          {data.map((coin, i) => (
-            <Grid coin={coin} key={i} />
-          ))}
+        <TabPanel value={0}>
+          <div className="grid-flex">
+            {data.map((coin, i) => (
+              <Grid coin={coin} key={i} />
+            ))}
+          </div>
         </TabPanel>
-        <TabPanel value={value} index={1}>
-          {data.map((coin, i) => (
-            <List coin={coin} key={i} />
-          ))}
-        </TabPanel>
+        <TabPanel value={1}>List</TabPanel>
       </TabContext>
-      {data.map((item, i) => (
-        <p key={i}>{item.id}</p>
-      ))}
     </div>
   );
 }

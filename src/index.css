@@ -10,6 +10,7 @@ html {
   --white: #ffffff;
   --blue: #3180e9;
   --grey: #888;
+  --darkgrey: #1b1b1b;
 }
 body {
   margin: 0;

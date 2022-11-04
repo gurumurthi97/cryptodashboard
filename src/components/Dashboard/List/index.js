@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
-function List(coin) {
-  return <div>{coin.id}</div>;
+function List() {
+  return <div>List</div>;
 }
 
 export default List;
