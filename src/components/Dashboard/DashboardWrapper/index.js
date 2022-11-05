@@ -7,7 +7,7 @@ import Grid from "../Grid";
 // import List from "../List";
 import "./style.css";
 function DashboardWrapper({ data }) {
-  const [value, setValue] = React.useState("1");
+  const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
