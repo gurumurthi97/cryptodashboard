@@ -43,6 +43,24 @@ function Grid({ coin }) {
           <TrendingDownIcon className="trending-icon re" fontSize="2.5rem" />
         )}
       </div>
+
+      <div>
+        {coin.price_change_percentage_24h > 0 ? (
+          <p className="price">${coin.current_price.toLocaleString()}</p>
+        ) : (
+          <p className="price  price-red">
+            ${coin.current_price.toLocaleString()}
+          </p>
+        )}
+      </div>
+      <p className="name">
+        <span className="sub-heading">Total Volume:</span>$
+        {coin.total_volume.toLocaleString()}
+      </p>
+      <p className="name">
+        <span className="sub-heading">Market Cap:</span>$
+        {coin.market_cap.toLocaleString()}
+      </p>
     </div>
   );
 }

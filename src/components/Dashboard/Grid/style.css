@@ -78,3 +78,15 @@
   border-color: var(--red);
   transition: all 0.3s;
 }
+.price {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--green);
+  margin-top: 0px;
+}
+.price-red {
+  color: var(--red);
+}
+.sub-heading {
+  font-weight: 600;
+}
