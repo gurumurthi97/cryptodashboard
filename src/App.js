@@ -4,7 +4,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Search from "./pages/Search";
 import Home from "./pages/Home";
+import CoinPage from "./pages/CoinPage";
 import AnimCursor from "./components/AnimCursor";
+
 function App() {
   return (
     <div>
@@ -14,6 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/coin" element={<CoinPage />} />
         </Routes>
       </BrowserRouter>
     </div>
