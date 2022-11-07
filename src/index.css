@@ -55,3 +55,12 @@ img {
 h1 {
   font-size: 2rem;
 }
+@media only screen and (max-width: 800px) {
+  p {
+    font-size: 80%;
+  }
+}
+td {
+  text-align: left !important;
+  width: 10%;
+}

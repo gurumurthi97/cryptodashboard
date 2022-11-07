@@ -6,6 +6,7 @@ import TabContext from "@mui/lab/TabContext";
 import Grid from "../Grid";
 // import List from "../List";
 import "./style.css";
+import List from "../List";
 function DashboardWrapper({ data }) {
   const [value, setValue] = React.useState(0);
 
@@ -32,7 +33,13 @@ function DashboardWrapper({ data }) {
             ))}
           </div>
         </TabPanel>
-        <TabPanel value={1}>List</TabPanel>
+        <TabPanel value={1}>
+          <table className="list-table">
+            {data.map((coin, i) => (
+              <List coin={coin} key={i} />
+            ))}
+          </table>
+        </TabPanel>
       </TabContext>
     </div>
   );
