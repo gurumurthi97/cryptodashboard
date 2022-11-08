@@ -10,6 +10,7 @@
   top: 0;
   background-color: var(--black);
   z-index: 100;
+  
 }
 .links-flex {
   display: flex;
