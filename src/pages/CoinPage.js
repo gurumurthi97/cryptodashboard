@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Loader from "../components/LoaderComponent";
 import axios from "axios";
+import Linechart from "../components/Dashboard/Linechart";
 function CoinPage() {
   const [searchParams] = useSearchParams();
   const [data, setData] = useState();
   const [prices, setPrice] = useState();
   const [loading, setLoading] = useState(true);
-
+  // const [chartData, setChartData] = useState({});
   const [loadingChat, setLoadingChat] = useState(true);
   useEffect(() => {
     if (searchParams) {
@@ -38,23 +39,31 @@ function CoinPage() {
       });
     }
   }, [data]);
+  const chartData = {
+    labels: prices?.map((data) => data[0]),
+    datasets: [
+      {
+        data: prices?.map((data) => data[1]),
+        borderWidth: 2,
+        fill: false,
+        tension: 0.25,
+        backgroundColor: "white",
+        borderColor: "white",
+        pointRadius: 0,
+      },
+    ],
+  };
   return (
-    <div>
+    <>
       {loading ? (
         <Loader />
       ) : (
         <>
           <Header />
-          <p>git </p>
-          {prices?.map((item, i) => (
-           <>
-           <p>i</p>
-            <p>{item[1]}</p>
-</>
-          ))}
+          <Linechart chartData={chartData} />
         </>
       )}
-    </div>
+    </>
   );
 }
 
