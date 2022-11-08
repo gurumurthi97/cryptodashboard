@@ -11,14 +11,14 @@ function CoinPage() {
   useEffect(() => {
     if (searchParams) {
       const API_URL = `https://api.coingecko.com/api/v3/coins/${searchParams}`;
-      // axios.get(API_URL.slice(0, -1)).then((response) => {
-      //   if (response.data) {
-      //     setData(response.data);
-      //     setLoading(false);
-      //   } else {
-      //     alert("Hai");
-      //   }
-      // });
+      axios.get(API_URL.slice(0, -1)).then((response) => {
+        if (response.data) {
+          setData(response.data);
+          setLoading(false);
+        } else {
+          alert("Hai");
+        }
+      });
     }
   }, [searchParams]);
 

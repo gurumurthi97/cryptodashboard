@@ -4,8 +4,8 @@ import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import "./style.css";
 function Grid({ coin }) {
   return (
-    <a href={`/coin?${coin.id}`}>
-      <div className="coin-box">
+    <div className="coin-box">
+      <a href={`/coin?${coin.id}`}>
         <div className="logo-div">
           <img src={coin.image} className="logo" alt="logo of crypto coin" />
           <div className="coin-info">
@@ -62,8 +62,8 @@ function Grid({ coin }) {
           <span className="sub-heading">Market Cap:</span>$
           {coin.market_cap.toLocaleString()}
         </p>
-      </div>
-    </a>
+      </a>
+    </div>
   );
 }
 

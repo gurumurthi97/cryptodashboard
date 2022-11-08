@@ -34,72 +34,81 @@ function List({ coin }) {
     }
   }, [volume]);
   return (
-    <tr className="list-wrapper">
-      <td className="image-td ">
-        <img src={coin.image} className="list-logo" alt="logo of crypto coin" />
-      </td>
-      <td className="coin-info ">
-        <p className="symbol td-text">{coin.symbol}-USD</p>
-        <p className="name td-text">{coin.name}</p>
-      </td>
-      <td className="data-div td-chip-flex ">
-        <div
-          className="chip td-text "
-          style={{
-            color:
-              coin.price_change_percentage_24h > 0
-                ? "var(--green)"
-                : "var(--red)",
-            borderColor:
-              coin.price_change_percentage_24h > 0
-                ? "var(--green)"
-                : "var(--red)",
-          }}
-        >
-          <p className="td-text ">
+    <a href={`/coin?${coin.id}`}>
+      <tr className="list-wrapper">
+        <td className="image-td ">
+          <img
+            src={coin.image}
+            className="list-logo"
+            alt="logo of crypto coin"
+          />
+        </td>
+        <td className="coin-info ">
+          <p className="symbol td-text">{coin.symbol}-USD</p>
+          <p className="name td-text">{coin.name}</p>
+        </td>
+        <td className="data-div td-chip-flex ">
+          <div
+            className="chip td-text "
+            style={{
+              color:
+                coin.price_change_percentage_24h > 0
+                  ? "var(--green)"
+                  : "var(--red)",
+              borderColor:
+                coin.price_change_percentage_24h > 0
+                  ? "var(--green)"
+                  : "var(--red)",
+            }}
+          >
+            <p className="td-text ">
+              {coin.price_change_percentage_24h > 0 ? (
+                <span>
+                  {"+" + coin.price_change_percentage_24h.toFixed(2) + "%"}
+                </span>
+              ) : (
+                coin.price_change_percentage_24h.toFixed(2) + "%"
+              )}
+            </p>
+          </div>
+          <td className="td-chip-flex td-icon">
             {coin.price_change_percentage_24h > 0 ? (
-              <span>
-                {"+" + coin.price_change_percentage_24h.toFixed(2) + "%"}
-              </span>
+              <TrendingUpIcon className="trending-icon" fontSize="2.5rem" />
             ) : (
-              coin.price_change_percentage_24h.toFixed(2) + "%"
+              <TrendingDownIcon
+                className="trending-icon re"
+                fontSize="2.5rem"
+              />
             )}
-          </p>
-        </div>
-        <td className="td-chip-flex td-icon">
+          </td>
+        </td>
+
+        <td>
           {coin.price_change_percentage_24h > 0 ? (
-            <TrendingUpIcon className="trending-icon" fontSize="2.5rem" />
+            <p className="price td-text">
+              ${coin.current_price.toLocaleString()}
+            </p>
           ) : (
-            <TrendingDownIcon className="trending-icon re" fontSize="2.5rem" />
+            <p className="price  price-red td-text">
+              ${coin.current_price.toLocaleString()}
+            </p>
           )}
         </td>
-      </td>
-
-      <td>
-        {coin.price_change_percentage_24h > 0 ? (
-          <p className="price td-text">
-            ${coin.current_price.toLocaleString()}
-          </p>
-        ) : (
-          <p className="price  price-red td-text">
-            ${coin.current_price.toLocaleString()}
-          </p>
-        )}
-      </td>
-      <td>
-        <td className="name2 td-text td-volume">
-          $ {coin.total_volume.toLocaleString()}
+        <td>
+          <td className="name2 td-text td-volume">
+            $ {coin.total_volume.toLocaleString()}
+          </td>
+          <td className="name2 td-text td-volume-mobile">
+            $ {volume.toLocaleString()}
+          </td>
         </td>
-        <td className="name2 td-text td-volume-mobile">
-          $ {volume.toLocaleString()}
+        <td>
+          <td className="name2 td-text td-icon">
+            $ {coin.market_cap.toLocaleString()}
+          </td>
         </td>
-      </td>
-      <td>
-        <td className="name2 td-text td-icon">
-          $ {coin.market_cap.toLocaleString()}
-        </td>
-      </td>
-    </tr>
+      </tr>
+    </a>
   );
 }
 
