@@ -10,7 +10,6 @@ function CoinPage() {
   const [data, setData] = useState();
   const [prices, setPrice] = useState();
   const [loading, setLoading] = useState(true);
-  // const [chartData, setChartData] = useState({});
   const [loadingChat, setLoadingChat] = useState(true);
   useEffect(() => {
     if (searchParams) {
