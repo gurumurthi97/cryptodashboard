@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useEffect, useState } from "react";
 import DashboardWrapper from "../components/Dashboard/DashboardWrapper";
-import Headers from "../components/Header";
+import Headers from "../components/Header/Index";
 import Loader from "../components/LoaderComponent";
 import Search from "../components/Dashboard/Search";
 function Dashboard() {
