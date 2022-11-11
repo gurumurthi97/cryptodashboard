@@ -47,7 +47,7 @@ function CoinPage() {
         fill: false,
         tension: 0.25,
         backgroundColor: "white",
-        borderColor: "white",
+        borderColor: "blue",
         pointRadius: 0,
       },
     ],
