@@ -82,3 +82,9 @@ h1 {
     font-size: 80%;
   }
 }
+.btn-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 3rem;
+}

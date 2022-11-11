@@ -5,6 +5,9 @@ import Header from "../components/Header/Index";
 import Loader from "../components/LoaderComponent";
 import axios from "axios";
 import Linechart from "../components/Dashboard/Linechart";
+import Button from "../components/Button";
+import SelectLabels from "../components/Dashboard/SelectLables/Index";
+
 function CoinPage() {
   const [searchParams] = useSearchParams();
   const [data, setData] = useState();
@@ -22,6 +25,13 @@ function CoinPage() {
       dt.setDate(dt.getDate() + 1);
     }
     return arr;
+  };
+  const options = {
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
   };
   useEffect(() => {
     if (searchParams) {
@@ -72,7 +82,8 @@ function CoinPage() {
       ) : (
         <>
           <Header />
-          <Linechart chartData={chartData} />
+          <SelectLabels />
+          <Linechart chartData={chartData} options={options} />
         </>
       )}
     </>
