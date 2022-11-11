@@ -11,6 +11,18 @@ function CoinPage() {
   const [prices, setPrice] = useState();
   const [loading, setLoading] = useState(true);
   const [loadingChat, setLoadingChat] = useState(true);
+  const today = new Date();
+  const priorDate = new Date(new Date().setDate(today.getDate() - 30));
+  const getDateArray = (start, end) => {
+    var arr = new Array();
+    var dt = new Date(start);
+    while (dt <= end) {
+      // arr.push(new Date(dt).getDay() + "/" + (new Date(dt).getMonth() + 1));
+      arr.push(new Date(dt).getDate() + "/" + (new Date(dt).getMonth() + 1));
+      dt.setDate(dt.getDate() + 1);
+    }
+    return arr;
+  };
   useEffect(() => {
     if (searchParams) {
       const API_URL = `https://api.coingecko.com/api/v3/coins/${searchParams}`;
@@ -39,7 +51,8 @@ function CoinPage() {
     }
   }, [data]);
   const chartData = {
-    labels: prices?.map((data) => data[0]),
+    // labels: prices?.map((data) => data[0]),
+    labels: getDateArray(priorDate, today),
     datasets: [
       {
         data: prices?.map((data) => data[1]),
@@ -47,7 +60,7 @@ function CoinPage() {
         fill: false,
         tension: 0.25,
         backgroundColor: "white",
-        borderColor: "blue",
+        borderColor: " #3180e9",
         pointRadius: 0,
       },
     ],
