@@ -5,7 +5,7 @@ import Drawer from "./Drawer";
 import "./style.css";
 import { useState, useEffect } from "react";
 
-function Index() {
+function Header() {
   // const [theme, settheme] = useState(localStorage.getItem("theme"));
   const [theme, setTheme] = useState(localStorage.getItem("theme"));
 
@@ -57,4 +57,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default Header;

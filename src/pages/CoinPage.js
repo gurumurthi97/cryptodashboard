@@ -1,7 +1,8 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Header from "../components/Header/Index";
+// import Header from "../components/Header/Index";
+import Header from "../components/Header";
 import Loader from "../components/LoaderComponent";
 import axios from "axios";
 import Linechart from "../components/Dashboard/Linechart";

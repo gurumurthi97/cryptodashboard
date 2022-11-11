@@ -1,10 +1,10 @@
 import React from "react";
 import LandingComponent from "../components/HomePageComponent/Layoutcomponent";
-import Headers from "../components/Header/Index";
+import Header from "../components/Header";
 function Home() {
   return (
     <div>
-      <Headers />
+      <Header />
       <LandingComponent />
     </div>
   );

@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useEffect, useState } from "react";
 import DashboardWrapper from "../components/Dashboard/DashboardWrapper";
-import Headers from "../components/Header/Index";
+import Header from "../components/Header";
 import Loader from "../components/LoaderComponent";
 import Search from "../components/Dashboard/Search";
 function Dashboard() {
@@ -35,7 +35,7 @@ function Dashboard() {
         <Loader />
       ) : (
         <>
-          <Headers />
+          <Header />
           <Search handleChange={handleChange} />
           <DashboardWrapper data={filteredCoins} />
         </>
