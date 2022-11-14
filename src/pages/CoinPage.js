@@ -1,19 +1,21 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-// import Header from "../components/Header/Index";
 import Header from "../components/Header";
 import Loader from "../components/LoaderComponent";
 import axios from "axios";
 import Linechart from "../components/Dashboard/Linechart";
-import Button from "../components/Button";
-import SelectLabels from "../components/Dashboard/SelectLables/Index";
 
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
 function CoinPage() {
   const [searchParams] = useSearchParams();
   const [data, setData] = useState();
+  const [days, setDays] = useState();
   const [prices, setPrice] = useState();
   const [loading, setLoading] = useState(true);
+  const [coin, setCoin] = useState({});
+  const [type, setType] = useState("prices");
   const [loadingChat, setLoadingChat] = useState(true);
   const today = new Date();
   const priorDate = new Date(new Date().setDate(today.getDate() - 30));
@@ -34,6 +36,20 @@ function CoinPage() {
       },
     },
   };
+  const [chartData, setChartdata] = useState({
+    labels: [],
+    datasets: [
+      {
+        data: prices?.map((data) => data[1]),
+        borderWidth: 2,
+        fill: false,
+        tension: 0.25,
+        backgroundColor: "white",
+        borderColor: " #3180e9",
+        pointRadius: 0,
+      },
+    ],
+  });
   useEffect(() => {
     if (searchParams) {
       const API_URL = `https://api.coingecko.com/api/v3/coins/${searchParams}`;
@@ -50,7 +66,7 @@ function CoinPage() {
   //https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30&interval=daily
   useEffect(() => {
     if (data) {
-      const API_URL = `https://api.coingecko.com/api/v3/coins/${data.id}/market_chart?vs_currency=usd&days=30&interval=daily`;
+      const API_URL = `https://api.coingecko.com/api/v3/coins/${data.id}/market_chart?vs_currency=usd&days=${days}&interval=daily`;
       axios.get(API_URL).then((response) => {
         if (response.data) {
           setPrice(response.data.prices);
@@ -61,21 +77,38 @@ function CoinPage() {
       });
     }
   }, [data]);
-  const chartData = {
-    // labels: prices?.map((data) => data[0]),
-    labels: getDateArray(priorDate, today),
-    datasets: [
-      {
-        data: prices?.map((data) => data[1]),
-        borderWidth: 2,
-        fill: false,
-        tension: 0.25,
-        backgroundColor: "white",
-        borderColor: " #3180e9",
-        pointRadius: 0,
-      },
-    ],
+
+  const handleChange = async (event) => {
+    setDays(event.target.value);
+    const API_URL2 = `https://api.coingecko.com/api/v3/coins/${data.id}/market_chart?vs_currency=usd&days=${event.target.value}&interval=daily`;
+    const price_data = await axios.get(API_URL2, {
+      crossDomain: true,
+    });
+    if (!price_data) {
+      console.log("No data ");
+      return;
+    }
+    setPrice(price_data.data.prices);
+    const priorDate_2 = new Date(
+      new Date().setDate(today.getDate() - event.target.value)
+    );
+    var dates_2 = getDateArray(priorDate_2, today);
+    setChartdata({
+      labels: dates_2,
+      datasets: [
+        {
+          data: price_data?.data?.prices?.map((data) => data[1]),
+          borderWidth: 2,
+          fill: false,
+          tension: 0.25,
+          backgroundColor: "white",
+          borderColor: " #3180e9",
+          pointRadius: 0,
+        },
+      ],
+    });
   };
+
   return (
     <>
       {loading ? (
@@ -83,7 +116,37 @@ function CoinPage() {
       ) : (
         <>
           <Header />
-          <SelectLabels />
+          <span style={{ margin: 0 }}>
+            Price Change in the last
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={days}
+              label="Days"
+              onChange={handleChange}
+              sx={{
+                height: "2.5rem",
+                marginLeft: "0.5rem",
+                color: "var(--white)",
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "var(--white)",
+                },
+                "& .MuiSvgIcon-root": {
+                  color: "var(--white)",
+                },
+                "&:hover": {
+                  "&& fieldset": {
+                    borderColor: "#3a80e9",
+                  },
+                },
+              }}
+            >
+              <MenuItem value={7}>7 Days</MenuItem>
+              <MenuItem value={30}>30 Days</MenuItem>
+              <MenuItem value={60}>60 Days</MenuItem>
+              <MenuItem value={90}>90 Days</MenuItem>
+            </Select>
+          </span>
           <Linechart chartData={chartData} options={options} />
         </>
       )}
